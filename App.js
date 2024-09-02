@@ -1,13 +1,12 @@
-import AppLoading from 'expo-app-loading';
 import { useFonts } from 'expo-font';
 import { LinearGradient } from 'expo-linear-gradient';
+import * as SplashScreen from 'expo-splash-screen';
 import { useEffect, useState } from 'react';
 import { ImageBackground, SafeAreaView, StyleSheet } from 'react-native';
 import Colors from './constants/colors';
 import GameOverScreen from './screens/GameOverScreen';
 import GameScreen from './screens/GameScreen';
 import StartGameScreen from './screens/StartGameScreen';
-import * as SplashScreen from 'expo-splash-screen';
 
 export default function App() {
   const [userNumber, setUserNumber] = useState(null);
@@ -72,19 +71,22 @@ export default function App() {
   }
 
   return (
-    <LinearGradient
-      style={styles.rootScreen}
-      colors={[Colors.primary700, Colors.accent500]}
-    >
-      <ImageBackground
-        source={require('./assets/images/background.png')}
+    <>
+      {/*<StatusBar barStyle="dark" />*/}
+      <LinearGradient
         style={styles.rootScreen}
-        resizeMode="cover"
-        imageStyle={styles.backgroundImage}
+        colors={[Colors.primary700, Colors.accent500]}
       >
-        <SafeAreaView style={styles.rootScreen}>{screen}</SafeAreaView>
-      </ImageBackground>
-    </LinearGradient>
+        <ImageBackground
+          source={require('./assets/images/background.png')}
+          style={styles.rootScreen}
+          resizeMode="cover"
+          imageStyle={styles.backgroundImage}
+        >
+          <SafeAreaView style={styles.rootScreen}>{screen}</SafeAreaView>
+        </ImageBackground>
+      </LinearGradient>
+    </>
   );
 }
 
